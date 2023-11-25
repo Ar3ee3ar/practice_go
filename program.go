@@ -41,8 +41,35 @@ func main() {
 	// switch {
 	// case score < 50:
 	// 	fmt.Println("Umm.. Maybe a little practice will do")
-	// case score >= 50:
+	// default:
 	// 	fmt.Println("Your grade is great")
 	// }
-
+	fmt.Println("---- array -----")
+	// var arr_num [4] int =[4] int {10} // arr_num := [4] int {10,20,30,40} // array with initial size
+	arr_num := [...]int{100}
+	arr_num[0] = 1
+	// fmt.Println(arr_num[2]) // index that not assign value is 0 (have initial size) | can't call (not have size)
+	fmt.Println(len(arr_num), arr_num[0])
+	fmt.Println("---- slices -----") // like array but can change size (dynamic size)
+	sl_name := []string{"a", "b"}
+	sl_name = append(sl_name, "c")
+	fmt.Println(sl_name)
+	fmt.Println("---- maps -----")
+	// country := map [string] string {} //var country map [string] string // [key_type] value_type
+	// country["th"] = "thailand"
+	// country["en"] = "england"
+	// or
+	country := map[string]string{"th": "thailand", "en": "england"}
+	fmt.Println(country["th"])
+	fmt.Println("---- for loop -----")
+	for i := 0; i <= 5; i++ {
+		if i == 1 {
+			continue // jump that round
+		}
+		fmt.Printf("round %d\n", i)
+	}
+	// condition for loop : break | continue
+	for index, value := range country {
+		fmt.Printf("%s => %s\n", index, value)
+	}
 }
