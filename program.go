@@ -1,9 +1,36 @@
 // go will correct syntax when save
 package main
 
-import "fmt" //input output lib //need to use lib that import
+import (
+	"fmt"                //input output lib //need to use lib that import
+	"gobasic/calculator" // calculator func (package)
+)
+
 // use ; to when connect command (it'll enter that command to new line)
 
+func showMessage(name string) (int, string) {
+	msg := name + " call -> show msg"
+	count := 1
+	return count, msg
+}
+
+func summation(numbers ...int) int { // not fix number of variable
+	total := 0
+	for _, value := range numbers { // use _ for complete loop
+		total += value
+	}
+	return total
+}
+
+// -------- struct product (OOP)-----------------
+type Product struct {
+	name     string
+	price    float64
+	category string
+	discount int
+}
+
+// --------------- main -----------------------
 func main() {
 	name := "Arzeezar" // type-inference : assign data type by type of value
 	var age int = 25   // static-inference
@@ -72,4 +99,16 @@ func main() {
 	for index, value := range country {
 		fmt.Printf("%s => %s\n", index, value)
 	}
+	fmt.Println("------- call func -------")
+	fmt.Println(showMessage(name))
+	fmt.Printf("sum 3 numbers : %d \n", summation(1, 2, 3))
+	fmt.Printf("sum 5 numbers : %d \n", summation(1, 2, 3, 4, 5))
+	fmt.Println("------- struct -------")
+	product1 := Product{name: "apple", price: 50, category: "fruit", discount: 10}
+	fmt.Println(product1)
+	fmt.Printf("%s price: %f\n", product1.name, product1.price)
+	product1.price -= float64(product1.discount)
+	fmt.Printf("after discount => %f\n", product1.price)
+	fmt.Println("------- custom package -------")
+	fmt.Println(calculator.Add(5, 10))
 }
